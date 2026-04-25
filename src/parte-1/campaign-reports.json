@@ -1,0 +1,352 @@
+[
+  {
+    "id": "1",
+    "name": "IBM",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "2",
+    "name": "Oracle",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "3",
+    "name": "Dell Technologies",
+    "metric": 2,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "4",
+    "name": "UPS",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "5",
+    "name": "United Airlines",
+    "metric": 6,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "6",
+    "name": "Bumble",
+    "metric": -2,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "7",
+    "name": "Nike",
+    "metric": -2,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "8",
+    "name": "Twitter",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "9",
+    "name": "Walt Disney",
+    "metric": 2,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "10",
+    "name": "Oracle",
+    "metric": 2,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "11",
+    "name": "Front",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "12",
+    "name": "DoorDash",
+    "metric": 7,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "13",
+    "name": "Apple",
+    "metric": -1,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "14",
+    "name": "Dell Technologies",
+    "metric": -1,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "15",
+    "name": "Gamestop",
+    "metric": 7,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "16",
+    "name": "HP",
+    "metric": -3,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "17",
+    "name": "Square",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "18",
+    "name": "Retool",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "19",
+    "name": "Pfizer",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "20",
+    "name": "JP Morgan Chase",
+    "metric": 4,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "21",
+    "name": "Stripe",
+    "metric": 0,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "22",
+    "name": "CVS Health",
+    "metric": 6,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "23",
+    "name": "Brex",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "24",
+    "name": "Slack",
+    "metric": 4,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "25",
+    "name": "Stripe",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "26",
+    "name": "Best Buy",
+    "metric": 6,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "27",
+    "name": "Wells Fargo",
+    "metric": 3,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "28",
+    "name": "Facebook",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "29",
+    "name": "Postmates",
+    "metric": -3,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "30",
+    "name": "FedEx",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "31",
+    "name": "Twitter",
+    "metric": 3,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "32",
+    "name": "American Express",
+    "metric": 2,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "33",
+    "name": "Square",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "34",
+    "name": "Walt Disney",
+    "metric": 0,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "35",
+    "name": "Johnson & Johnson",
+    "metric": 0,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "36",
+    "name": "Progressive",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "37",
+    "name": "Slack",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "38",
+    "name": "MetLife",
+    "metric": -5,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "39",
+    "name": "Comcast",
+    "metric": 2,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "40",
+    "name": "Verizon",
+    "metric": -5,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "41",
+    "name": "Ford Motor",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "42",
+    "name": "General Motors",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "43",
+    "name": "UnitedHealth Group",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "44",
+    "name": "Dell Technologies",
+    "metric": -1,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "45",
+    "name": "Ford Motor",
+    "metric": 1,
+    "status": "warning",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "46",
+    "name": "DoorDash",
+    "metric": 4,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "47",
+    "name": "Allstate",
+    "metric": 6,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "48",
+    "name": "JP Morgan Chase",
+    "metric": -3,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "49",
+    "name": "General Electric",
+    "metric": 5,
+    "status": "ok",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  },
+  {
+    "id": "50",
+    "name": "Stripe",
+    "metric": -4,
+    "status": "critical",
+    "evaluatedAt": "2026-04-25T23:15:00.635Z"
+  }
+]

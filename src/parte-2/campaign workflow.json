@@ -1,0 +1,401 @@
+{
+  "name": "campaign workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "campaign-reports",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        336
+      ],
+      "id": "37682c38-82de-40c0-b73e-a757dd155671",
+      "name": "Webhook",
+      "webhookId": "5160f909-48d0-4358-8785-078e8f1fcf60"
+    },
+    {
+      "parameters": {
+        "jsCode": "const campaign = $input.first().json.body.campaignReports;\n\nreturn campaign.map(campaña => {\n  return { json: campaña };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        80,
+        336
+      ],
+      "id": "3c03f212-7663-4f06-b1a6-1026f1119b9c",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "327a178a-05fa-434b-9111-e6024b8031ff",
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "critical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "466ae19d-cb6e-4404-8af5-4f8bad5fbce1",
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "warning",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        288,
+        336
+      ],
+      "id": "4b1fe8ca-5faa-4760-b7d8-673ff9f903a2",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nif (items.length === 0) return [];\n\nlet campaignList = \"🚨 **LISTADO DE CAMPAÑAS EN ESTADO CRÍTICO** 🚨\\n\\n\";\n\nitems.forEach(item => {\n  const data = item.json;\n  campaignList += `• **ID:** ${data.id} | ${data.name} | ${data.metric}\\n`;\n});\n\nreturn [{\n  json: {\n    texto_discord: campaignList\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        208
+      ],
+      "id": "a7f89f56-ee07-4871-a87a-1b6904da68fc",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/16EcGqWsBdrlsHRLYxROyLm5_eisNnfjIEUVYCe_POSI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16EcGqWsBdrlsHRLYxROyLm5_eisNnfjIEUVYCe_POSI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.id }}",
+            "Nombre": "={{ $json.name }}",
+            "Metrica": "={{ $json.metric }}",
+            "Estado": "={{ $json.status }}",
+            "Fecha": "={{ $json.evaluatedAt }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Metrica",
+              "displayName": "Metrica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        432
+      ],
+      "id": "9b718fd0-e620-4c08-85b5-10d5f9698f50",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "b4FBkQoSiPXkgRSo",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.all()[0].json;\n\nif (!item.body || !item.body.campaignSummary) {\n  throw new Error(\"Fallo crítico: El webhook no envió el objeto campaignSummary.\");\n}\n\nconst summaryData = item.body.campaignSummary;\n\nif (summaryData.summary.includes(\"No se pudo generar el resumen\") || summaryData.rawResponse === \"User not found.\") {\n  const motivoError = summaryData.rawResponse || \"Error de conexión o parseo con la IA.\";\n  throw new Error(`Fallo interno del LLM: ${motivoError}`);\n}\n\nconst summary = summaryData.summary || \"Sin resumen\";\nconst criticalCampaigns = [...new Set(summaryData.criticalCampaigns || [])]; \nconst suggestedActions = summaryData.suggestedActions || [];\n\nlet texto = \"📊 **REPORTE DE CAMPAÑAS**\\n\\n\";\n\ntexto += `**📝 Summary:**\\n> ${summary}\\n\\n`;\n\ntexto += \"**🚨 Critical Campaigns:**\\n\";\nif (criticalCampaigns.length > 0) {\n  criticalCampaigns.forEach(campana => {\n    texto += `• ${campana}\\n`;\n  });\n} else {\n  texto += \"• Ninguna.\\n\";\n}\n\ntexto += \"\\n**💡 Suggested Actions:**\\n\";\nif (suggestedActions.length > 0) {\n  suggestedActions.forEach((accion, index) => {\n    texto += `${index + 1}. ${accion}\\n`;\n  });\n} else {\n  texto += \"• Ninguna sugerencia.\\n\";\n}\n\nreturn [{\n  json: {\n    texto_discord: texto\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        560
+      ],
+      "id": "927cbc4e-d809-4f6f-9049-13d04411280e",
+      "name": "Code in JavaScript2",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.all()[0].json;\n\nconst errorMessage = item.error?.message || \"Ocurrió un error inesperado al procesar los datos del webhook.\";\n\nlet alerta = \"⚠️ **ALERTA DE ERROR: REPORTE DE CAMPAÑAS** ⚠️\\n\\n\";\nalerta += `**Motivo del fallo:** \\n> ${errorMessage}\\n\\n`;\nalerta += \"Revisa la fuente que envía el Webhook, la data de `campaignSummary` no llegó correctamente.\";\n\nreturn [{\n  json: {\n    texto_discord: alerta,\n    error_status: true\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        720
+      ],
+      "id": "7eba7ee4-c659-4acc-8dc8-3e03f53b2518",
+      "name": "error handling"
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{ $json.texto_discord }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        160,
+        544
+      ],
+      "id": "5e7ff90b-d8fe-4d18-9f11-22b11e54640e",
+      "name": "Summary Campaign LLM",
+      "webhookId": "f3daa651-3b0c-489e-96ba-b07e522b336d",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "9dB1dBkUz3elIK5z",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{ $json.texto_discord }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        736,
+        208
+      ],
+      "id": "bbda5074-1551-4fdf-8a94-ac4343b414fa",
+      "name": "List critical capaign",
+      "webhookId": "f3daa651-3b0c-489e-96ba-b07e522b336d",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "9dB1dBkUz3elIK5z",
+          "name": "Discord Webhook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{ $json.texto_discord }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        288,
+        720
+      ],
+      "id": "6d49cb0c-9b71-4442-9038-ea8c28c8a7b8",
+      "name": "error notification",
+      "webhookId": "f3daa651-3b0c-489e-96ba-b07e522b336d",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "9dB1dBkUz3elIK5z",
+          "name": "Discord Webhook account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "List critical capaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Summary Campaign LLM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error handling",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary Campaign LLM": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "error handling": {
+      "main": [
+        [
+          {
+            "node": "error notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1f18628e-0480-4795-bd45-b15fba54d4d5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9dc167b181e5c92cb433a71d75fad62b47867093de467e2feb13769eba95732a"
+  },
+  "id": "DA5yUYljHwMQM7su",
+  "tags": []
+}
