@@ -128,15 +128,27 @@ Para elegir la api utilice la herramienta "https://retool.com/api-generator", la
 
 Para la automatización de las acciones a partir de los datos, se creó un flujo de trabajo en n8n que recibe el payload a través de un Webhook. El flujo se divide en dos ramas principales de procesamiento, que se ejecutan en paralelo:
 
+![Flujo Completo N8N](./src/images/n8n.png)
+
 1. **Procesamiento de Reportes (`campaignReports`):**
    - Se extrae el listado de campañas y un nodo **Switch** filtra cada campaña según su estado (`status`):
      - **Crítico (`critical`):** Se agrupan todas las campañas críticas en un único texto y se genera un mensaje de alerta consolidado que se envía a un canal de **Discord**.
+
+       ![Alerta Discord](./src/images/discord-critical-campaign.png)
+
      - **Advertencia (`warning`):** Las campañas con este estado se redirigen a un nodo de **Google Sheets**, donde cada registro es anexado como una nueva fila (incluyendo ID, Nombre, Métrica, Estado y Fecha).
+
+       ![Google Sheets](./src/images/google-sheets.png)
 
 2. **Procesamiento del Resumen de la IA (`campaignSummary`):**
    - Un nodo procesa el resumen general de las campañas, la lista de campañas críticas y las acciones sugeridas proporcionadas por el LLM.
    - Si los datos son válidos, se formatea la respuesta en un reporte estructurado y se notifica al canal de **Discord**.
+
+     ![Reporte LLM](./src/images/report-llm.png)
+
    - **Manejo de Errores:** Si el objeto `campaignSummary` no se envía correctamente o la IA indica un fallo de conexión, se captura el error y se envía una notificación de alerta dedicada a **Discord** para informar sobre la eventualidad y evitar que el flujo falle silenciosamente.
+
+     ![Error LLM](./src/images/error.png)
 
 ## Parte 3 — Extensión de Código y Base de Datos
 
